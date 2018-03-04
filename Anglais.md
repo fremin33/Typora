@@ -1,6 +1,6 @@
 ### The moral bias behing your search results
 
-whenerver = a chaque fois 
+whenerver = a chaque fois  test
 
 search engine =moteur de recherche
 
@@ -275,4 +275,3 @@ neat = soigné
 7. and they need also the role its play in your life 
 8. ​
 
- 
