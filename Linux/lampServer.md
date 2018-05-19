@@ -36,17 +36,17 @@ On voit que le fichier 000-default.conf pointe vers /var/www/html , on le modifi
 ```bash
 # etc/apache2/site-availables/000-default.conf
 DocumentRoot /home/florian/www
+<Directory /home/florian/www>
+	Options Indexes FollowSymlinks
+	AllowOverride All
+	Require all granted
+</Directory>
 ```
 
 ### Configuration des paramètres du dossier où pointe Apache2
 
 ```bash
 # ect/apache2/apache2.conf
-<Directory /home/florian/www>
-	Options Indexes FollowSymlinks
-	AllowOverride All
-	Require all granted
-</Directory>
 ```
 
 ### Actualise la nouvelle configuration d'apache
@@ -138,6 +138,8 @@ cat ~/.ssh/id_rsa.pub
 
 ```
 https://doc.ubuntu-fr.org/android_sdk
+https://developer.android.com/studio/index.html#command-tools
+On remplace tools par le nouveau tools
 ```
 
 ### Désinstaller et installer la bonne version de Java 
@@ -164,6 +166,8 @@ sudo apt-get install openjdk-8-jdk
 ```
 sudo apt install gradle
 ```
+
+### Ajout des path 
 
 vim : 
 
