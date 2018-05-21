@@ -108,8 +108,8 @@ php -r "unlink('composer-setup.php');"
 ## Installer NodeJs et Npm
 
 ```bash
-sudo apt-get update
-sudo apt-get install nodejs npm
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt install -y nodejs
 ```
 
 ## Installer Git
