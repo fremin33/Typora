@@ -1,4 +1,4 @@
-# Installer un serveur Lamp sous linux 
+#  Installer un serveur Lamp sous linux 
 
 ## Installation de Apache2
 
