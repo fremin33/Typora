@@ -10,13 +10,17 @@ apt-get install apache2
 
 ```
 apt-get install php
-apt-get install  libapache2-mod-php7.0
+# apt-get install  libapache2-mod-php7.0 
 ```
 
 ## Installation de Mysql
 
 ```
 apt-get install mysql-server
+sudo mysql --user=root mysql
+CREATE USER 'fremin33'@'localhost' IDENTIFIED BY 'root';
+GRANT ALL PRIVILEGES ON *.* TO 'fremin33'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 ```
 
 ## Installation de PhpMyAdmin
@@ -35,18 +39,19 @@ On voit que le fichier 000-default.conf pointe vers /var/www/html , on le modifi
 
 ```bash
 # etc/apache2/site-availables/000-default.conf
-DocumentRoot /home/florian/www
-<Directory /home/florian/www>
-	Options Indexes FollowSymlinks
-	AllowOverride All
-	Require all granted
+DocumentRoot /var/www/
+
+<Directory /var/www/>
+    Options Indexes FollowSymlinks
+    AllowOverride All
+    Require all granted
 </Directory>
 ```
 
-### Configuration des paramètres du dossier où pointe Apache2
+### Créer un lien symbolique vers www
 
 ```bash
-# ect/apache2/apache2.conf
+sudo ln -s /home/florian/www /var/www
 ```
 
 ### Actualise la nouvelle configuration d'apache
@@ -108,8 +113,11 @@ php -r "unlink('composer-setup.php');"
 ## Installer NodeJs et Npm
 
 ```bash
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt install -y nodejs
+sudo apt-get update
+sudo apt-get install -y curl apt-transport-https ca-certificates &&
+  curl --fail -ssL -o setup-nodejs https://deb.nodesource.com/setup_8.x &&
+  sudo bash setup-nodejs &&
+  sudo apt-get install -y nodejs build-essential
 ```
 
 ## Installer Git
@@ -167,8 +175,14 @@ sudo apt-get install openjdk-8-jdk
 sudo apt install gradle
 ```
 
-### Ajout des path 
+## Virtual Box
 
-vim : 
+Monter un dossier entre linux et windows permanent
 
-c$ => Supprime la ligne que l'on veut éditer
+```
+mkdir ~/new
+sudo mount -t vboxsf New ~/new
+sudo nano /etc/fstab
+New /home/user/new vboxsf defaults 0 0
+```
+
