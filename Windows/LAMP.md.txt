@@ -1,0 +1,91 @@
+## Lamp Serveur on Windows
+
+### Installation Apache
+
+```
+# Télécharger Apache2
+https://www.apachehaus.com/cgi-bin/download.plx
+
+# Extraire et placer le contenu dans C:\
+
+# Modifier la variable d'environnement PATH
+Panneau de configuration > Système et sécurité > Système > Paramètres de système avancés > Variables d'environnement > Variable Système > Path > Modifier > Nouveau > C:\Apache24\bin
+
+# Ouvrir un terminal en administrateur
+	# Installer le service apache 
+	httpd -k install
+	# Lancer le serveur 
+	httpd
+
+# Dans le fichier C:\Apache24\conf\httpd.conf
+# Modifier index.html en index.php
+<IfModule dir_module>
+    DirectoryIndex index.php
+</IfModule>
+
+# Ajouter le module php
+AddHandler application/x-httpd-php .php
+AddType application/x-httpd-php .php .html
+LoadModule php7_module "c:/php/php7apache2_4.dll"
+PHPIniDir "c:/php"
+
+# Démarrer Apache dans les services 
+Apache2.4 > (ClickD) > Démarrer 
+```
+
+### Installation Mysql
+
+```
+# Télécharger Mysql
+https://dev.mysql.com/downloads/installer/
+
+# Installer Mysql Server
+```
+
+
+
+## Installation PHP (Thread Safe)
+
+```
+# Télécharger PHP
+https://windows.php.net/download#php-7.2
+
+# Extraire et placer le contenu dans C:\php
+
+# Modifier la variable d'environnement PATH
+Panneau de configuration > Système et sécurité > Système > Paramètres de système avancés > Variables d'environnement > Variable Système > Path > Modifier > Nouveau > C:\php
+
+# Activer dans C:\php\php.ini (dupliquer php.ini-developpement)
+extension=php_mbstring.dll
+extension=php_mysqli.dll
+extension=php_pdo_mysql.dll
+
+```
+
+## Installation PHPMyAdmin
+
+```
+# Télécharger PHPMyAdmin
+https://www.phpmyadmin.net/
+
+# Placer dans le dossier C:\Apache24\htdocs
+
+# Renommer config.sample.inc.php > config.inc
+
+# Ajouter une clé blowfish_secret
+$cfg['blowfish_secret'] = 'B81lvcY2UJY1UdXNAbN75GPYYQl899qa';
+```
+
+## Virtual Host sous Apache
+
+```
+# Décommenter la ligne suivante c/Apache24/conf/httpd.conf
+Include conf/extra/httpd-vhosts.conf
+
+# Ajouter sa config dans /c/Apache24/conf/extra/httpd-vhost.conf
+<VirtualHost *:80>
+    DocumentRoot "${SRVROOT}/htdocs/definima/net-investissement/public"
+    ServerName net-investissement.local
+</VirtualHost>
+```
+
