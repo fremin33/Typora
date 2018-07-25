@@ -1,6 +1,6 @@
 ### The moral bias behing your search results
 
-whenerver = a chaque fois 
+whenerver = a chaque foi
 
 search engine =moteur de recherche
 
