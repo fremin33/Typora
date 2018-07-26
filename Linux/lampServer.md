@@ -39,9 +39,9 @@ On voit que le fichier 000-default.conf pointe vers /var/www/html , on le modifi
 
 ```bash
 # etc/apache2/site-availables/000-default.conf
-DocumentRoot /var/www/
+DocumentRoot /var/www/html
 
-<Directory /var/www/>
+<Directory /var/www/html>
     Options Indexes FollowSymlinks
     AllowOverride All
     Require all granted
@@ -51,7 +51,7 @@ DocumentRoot /var/www/
 ### Créer un lien symbolique vers www
 
 ```bash
-sudo ln -s /home/florian/www /var/www
+sudo ln -s /var/www/html /home/florian/www 
 ```
 
 ### Actualise la nouvelle configuration d'apache
