@@ -11,6 +11,7 @@ apt-get install apache2
 ```
 apt-get install php
 # apt-get install  libapache2-mod-php7.0 
+# changer de version de php : sudo update-alternatives --set php /usr/bin/php7.1
 ```
 
 ## Installation de Mysql
